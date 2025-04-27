@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Todos List
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css")
+  body
+    .container.mt-5
+      h1.text-center.mb-4 All Todos
+      table.table.table-bordered.table-striped.table-hover
+        thead.table-dark
+          tr
+            th Title
+            th CreatedBy
+            th Status
+            th Created At
+            th Updated At
+        tbody
+          each todo in todos
+            tr
+              td= todo.title
+              td= todo.userId ? todo.userId.username : 'No User'
+              td= todo.status
+              td= new Date(todo.createdAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })
+              td= new Date(todo.updatedAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short' })
